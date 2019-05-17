@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "font"
+exit 0

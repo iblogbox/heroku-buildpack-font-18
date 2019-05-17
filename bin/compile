@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+BUILD_DIR="$1"
+SOURCE_DIR="$(dirname $0)/../compiled"
+TARGET_DIR="$BUILD_DIR/vendor/myfontforge"
+
+echo "-----> Copying files to $TARGET_DIR"
+
+mkdir -p "$TARGET_DIR"
+unzip "$SOURCE_DIR/fontforge.zip" -d "$TARGET_DIR"
+chmod +x "$TARGET_DIR/fontforge"
+chmod +x "$TARGET_DIR/fontimage"
+chmod +x "$TARGET_DIR/fontlint"
+chmod +x "$TARGET_DIR/sfddiff"
+chmod +x "$TARGET_DIR/woff2_compress"
+chmod +x "$TARGET_DIR/woff2_decompress"
+chmod +x "$TARGET_DIR/woff2_info"
+
+
+# update PATH and LD_LIBRARY_PATH
+#echo "-----> Updating environment variables"
+#PROFILE_PATH="$BUILD_DIR/.profile.d/myfontforge.sh"
+#mkdir -p $(dirname $PROFILE_PATH)
+#echo "export PATH=/app/vendor/myfontforge:\$PATH" >> $PROFILE_PATH
+#echo "export LD_LIBRARY_PATH=/app/vendor/myfontforge:\$LD_LIBRARY_PATH" >> $PROFILE_PATH
